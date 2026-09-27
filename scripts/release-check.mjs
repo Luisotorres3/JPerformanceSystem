@@ -128,7 +128,10 @@ try {
   if (existsSync("dist/v1/index.html")) {
     for (const route of ["/v1/", "/v1/#/planes", "/v1/#/contacto"]) {
       await page.goto(`${base}${route}`);
-      await page.locator(route === "/v1/" ? "h2" : "h1").first().waitFor();
+      await page
+        .locator(route === "/v1/" ? "h2" : "h1")
+        .first()
+        .waitFor();
       assert((await page.locator("#root").innerText()).length > 100);
       await page.waitForTimeout(300);
       const broken = await page
@@ -146,10 +149,45 @@ try {
   }
   assert.deepEqual(errors, []);
   const metadata = JSON.parse(await readFile("src/data/seo.json", "utf8"));
+  const crawler = await browser.newPage({ javaScriptEnabled: false });
   for (const route of Object.keys(metadata)) {
     const html = await readFile(`dist${route === "/" ? "" : route}/index.html`, "utf8");
     assert(html.includes(metadata[route].title), `Missing static title: ${route}`);
+    await crawler.setContent(html);
+    for (const selector of ['meta[property="og:title"]', 'meta[name="twitter:title"]']) {
+      assert.equal(await crawler.locator(selector).getAttribute("content"), metadata[route].title);
+    }
+    for (const selector of [
+      'meta[name="description"]',
+      'meta[property="og:description"]',
+      'meta[name="twitter:description"]',
+    ]) {
+      assert.equal(
+        await crawler.locator(selector).getAttribute("content"),
+        metadata[route].description
+      );
+    }
+    for (const selector of ['meta[property="og:image"]', 'meta[name="twitter:image"]']) {
+      assert.equal(
+        await crawler.locator(selector).getAttribute("content"),
+        "https://jperformancesystem.es/media/jps-social-v2-20260927.jpg"
+      );
+    }
+    assert.equal(
+      await crawler.locator('meta[property="og:image:width"]').getAttribute("content"),
+      "1200"
+    );
+    assert.equal(
+      await crawler.locator('meta[property="og:image:height"]').getAttribute("content"),
+      "630"
+    );
   }
+  const { default: sharp } = await import("sharp");
+  const socialImage = await sharp("dist/media/jps-social-v2-20260927.jpg").metadata();
+  assert.equal(socialImage.width, 1200);
+  assert.equal(socialImage.height, 630);
+  assert.equal(socialImage.format, "jpeg");
+  await crawler.close();
   await writeFile("qa.local/release/results.json", JSON.stringify(results, null, 2));
 } finally {
   await browser.close();
