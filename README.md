@@ -11,11 +11,11 @@
 
 Running, fuerza y preparación física, con una experiencia centrada en elegir un plan y dar el primer paso.
 
-[Web actual](https://jperformancesystem.es/) · [Explorar V1](https://jperformancesystem.es/v1/) · [Releases](https://github.com/Luisotorres3/j-performance-launch/releases) · [Documentación](docs/VERSIONES.md)
+[Web actual](https://jperformancesystem.es/) · [Explorar V1](https://jperformancesystem.es/v1/) · [Releases](https://github.com/Luisotorres3/JPerformanceSystem/releases) · [Documentación](docs/VERSIONES.md)
 
-[![Revisión](https://github.com/Luisotorres3/j-performance-launch/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Luisotorres3/j-performance-launch/actions/workflows/ci.yml)
-[![Publicación](https://github.com/Luisotorres3/j-performance-launch/actions/workflows/pages.yml/badge.svg)](https://github.com/Luisotorres3/j-performance-launch/actions/workflows/pages.yml)
-[![Última release](https://img.shields.io/github/v/release/Luisotorres3/j-performance-launch)](https://github.com/Luisotorres3/j-performance-launch/releases/latest)
+[![Revisión](https://github.com/Luisotorres3/JPerformanceSystem/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Luisotorres3/JPerformanceSystem/actions/workflows/ci.yml)
+[![Publicación](https://github.com/Luisotorres3/JPerformanceSystem/actions/workflows/pages.yml/badge.svg)](https://github.com/Luisotorres3/JPerformanceSystem/actions/workflows/pages.yml)
+[![Última release](https://img.shields.io/github/v/release/Luisotorres3/JPerformanceSystem)](https://github.com/Luisotorres3/JPerformanceSystem/releases/latest)
 
 </div>
 
@@ -36,8 +36,8 @@ Sitio web responsive que presenta el trabajo de Juan Pasquau y permite consultar
 
 | Versión                   | Acceso                                                     | Referencia                                                                                                 |
 | ------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| **V2 actual**             | [Abrir la web](https://jperformancesystem.es/)             | `main`; release [`v2.0.0`](https://github.com/Luisotorres3/j-performance-launch/releases/tag/v2.0.0)       |
-| **V1 histórica**          | [Abrir la vista previa](https://jperformancesystem.es/v1/) | `version/v1`; release [`v1.0.0`](https://github.com/Luisotorres3/j-performance-launch/releases/tag/v1.0.0) |
+| **V2 actual**             | [Abrir la web](https://jperformancesystem.es/)             | `main`; release [`v2.0.0`](https://github.com/Luisotorres3/JPerformanceSystem/releases/tag/v2.0.0)       |
+| **V1 histórica**          | [Abrir la vista previa](https://jperformancesystem.es/v1/) | `version/v1`; release [`v1.0.0`](https://github.com/Luisotorres3/JPerformanceSystem/releases/tag/v1.0.0) |
 | **V1 original publicada** | Restauración desde Actions                                 | Tag `v1-pages-snapshot`; copia descargable en la release V1                                                |
 
 La vista previa de V1 se compila desde su código conservado, con recursos aislados en `/v1/`. El snapshot mantiene los archivos originales para una restauración exacta. **V1 contiene información y precios históricos, no la oferta comercial vigente.**
@@ -62,8 +62,8 @@ Las dependencias exactas están en [`package.json`](package.json) y [`package-lo
 **Requisitos:** Node.js 22 y npm. CI utiliza `package-lock.json` como referencia de instalación.
 
 ```sh
-git clone https://github.com/Luisotorres3/j-performance-launch.git
-cd j-performance-launch
+git clone https://github.com/Luisotorres3/JPerformanceSystem.git
+cd JPerformanceSystem
 npm ci
 npm run dev
 ```
@@ -113,13 +113,13 @@ Las pruebas arrancan y detienen su propio servidor de preview. Comprueban rutas,
 
 En Windows se utiliza Edge por defecto. Para usar Chromium, define `BROWSER_CHANNEL=chromium` antes de ejecutar las pruebas. `TEST_PORT` permite cambiar el puerto de preview, cuyo valor predeterminado es `4175`.
 
-El [informe de revisión](docs/REVISION-V2.md) detalla el alcance y los límites. Las pruebas automatizadas no equivalen a una certificación legal, de seguridad o de accesibilidad. Los avisos de dependencias pendientes se siguen en la [incidencia #12](https://github.com/Luisotorres3/j-performance-launch/issues/12).
+El [informe de revisión](docs/REVISION-V2.md) detalla el alcance y los límites. Las pruebas automatizadas no equivalen a una certificación legal, de seguridad o de accesibilidad. Los avisos de dependencias pendientes se siguen en la [incidencia #12](https://github.com/Luisotorres3/JPerformanceSystem/issues/12).
 
 ## Publicación y restauración
 
 La publicación es **manual e independiente del merge**. Integrar cambios no sobrescribe automáticamente una versión restaurada.
 
-1. Abrir [Actions → Publish website](https://github.com/Luisotorres3/j-performance-launch/actions/workflows/pages.yml).
+1. Abrir [Actions → Publish website](https://github.com/Luisotorres3/JPerformanceSystem/actions/workflows/pages.yml).
 2. Pulsar **Run workflow** y mantener la rama **`main`**.
 3. Elegir la versión y ejecutar el workflow.
 
@@ -138,7 +138,6 @@ No utilizar el antiguo comando `gh-pages -d dist`: la publicación se gestiona d
 ```text
 .github/workflows/    Revisión de PR y publicación reversible
 docs/                Operación, versiones e informe de revisión
-  archive/           Documentación histórica
 public/              Archivos públicos, fuentes y configuración del dominio
 scripts/             Generación estática, pruebas y empaquetado de V1
 src/
@@ -151,7 +150,9 @@ src/
   styles/            Estilos globales y por sección
 ```
 
-`dist/`, `node_modules/`, archivos de entorno y resultados locales no se versionan. Los documentos anteriores conservados en la raíz son referencias históricas y pueden no describir la arquitectura actual.
+`dist/`, `node_modules/`, archivos de entorno y resultados locales no se versionan. Las notas privadas y entregables temporales deben guardarse en `local/` o `qa.local/`, excluidos de Git. La documentación histórica se conserva en los tags de V1, no se duplica en `main`.
+
+La [guía de mantenimiento](docs/MANTENIMIENTO.md) recoge dónde editar cada contenido, configurar el formulario y revisar archivos antes de publicarlos. Ejecuta `npm run check:repo` antes de una PR: comprueba archivos excluidos y patrones de credenciales sin mostrar sus valores. No sustituye una auditoría del historial ni un detector completo de secretos.
 
 ## Flujo de cambios
 
