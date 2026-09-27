@@ -1,45 +1,28 @@
 import { readFile } from "node:fs/promises";
 import { chromium } from "playwright";
 
-// Render a share card from the actual brand assets, without modifying the originals.
-const portrait = (await readFile("src/assets/juan-personal.png")).toString("base64");
-const font = (await readFile("public/fonts/anton-latin.woff2")).toString("base64");
+// Use the existing logo framing so the artwork stays legible in square thumbnails.
+const logo = (await readFile("src/assets/jps-white.png")).toString("base64");
 const browser = await chromium.launch({
   channel: process.env.BROWSER_CHANNEL || (process.platform === "win32" ? "msedge" : undefined),
 });
 try {
   const page = await browser.newPage({
-    viewport: { width: 1200, height: 630 },
-    deviceScaleFactor: 2,
+    viewport: { width: 1024, height: 1024 },
+    deviceScaleFactor: 1,
   });
   await page.setContent(`<!doctype html><html lang="es"><head><meta charset="utf-8"><style>
-    @font-face { font-family: Anton; src: url(data:font/woff2;base64,${font}) format('woff2'); }
     * { box-sizing: border-box; }
-    body { margin: 0; background: #fff; color: #0a2747; font-family: Arial, sans-serif; }
-    main { position: relative; height: 630px; padding: 52px; overflow: hidden; border-bottom: 12px solid #f3bf31; }
-    .brand { margin: 0 0 62px; font-size: 26px; font-weight: 700; }
-    h1 { position: relative; z-index: 1; margin: 0; font: 70px/1.2 Anton, sans-serif; letter-spacing: 0; }
-    h1 span { color: #936500; }
-    .name { margin: 30px 0 12px; font-size: 25px; font-weight: 700; }
-    .services { margin: 0; font-size: 22px; color: #44576a; }
-    .url { position: absolute; bottom: 36px; left: 52px; font-size: 21px; }
-    img { position: absolute; width: 535px; height: 550px; object-fit: contain; object-position: bottom; right: 8px; bottom: 0; }
-  </style></head><body><main>
-    <p class="brand">J PERFORMANCE SYSTEM</p>
-    <h1>EMPIEZA AHORA<br><span>EMPIEZA DE VERDAD</span></h1>
-    <p class="name">Juan Pasquau · Entrenador</p>
-    <p class="services">Running · Fuerza · Oposiciones</p>
-    <p class="url">jperformancesystem.es</p>
-    <img src="data:image/png;base64,${portrait}" alt="Juan Pasquau">
-  </main></body></html>`);
-  await page.evaluate(async () => {
-    await document.fonts.ready;
-    await Promise.all([...document.images].map((image) => image.decode()));
-  });
+    body { margin: 0; background: #0c2945; width: 1024px; height: 1024px; display: grid; place-items: center; }
+    .mark { position: relative; width: 860px; height: 645px; overflow: hidden; }
+    img { position: absolute; width: 178.6047%; height: auto; left: -43.0233%; top: -28.125%; }
+  </style></head><body><div class="mark">
+    <img src="data:image/png;base64,${logo}" alt="Logo JPS">
+  </div></body></html>`);
+  await page.locator("img").evaluate((image) => image.decode());
   await page.screenshot({
-    path: "public/media/jps-social-v3-hd.jpg",
-    type: "jpeg",
-    quality: 98,
+    path: "public/media/jps-social-v4-logo.png",
+    type: "png",
   });
 } finally {
   await browser.close();
