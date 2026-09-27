@@ -172,7 +172,7 @@ export function ChallengesPreview() {
       <div className="v2-container">
         <Reveal className="home-preview-heading">
           <div>
-            <p className="eyebrow">06 / RETOS POR DELANTE</p>
+            <p className="eyebrow">05 / RETOS POR DELANTE</p>
             <h2 id="home-challenges-title" className="display-heading">
               Ponle una meta
               <br />

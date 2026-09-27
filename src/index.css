@@ -1185,8 +1185,8 @@
 }
 
 .site-footer {
-  background: hsl(var(--ink));
-  color: hsl(var(--paper));
+  background: #0c2945;
+  color: #fff;
   padding: 65px 0 25px;
 }
 .footer-main {
@@ -1201,10 +1201,10 @@
   font-size: 12px;
   line-height: 1.8;
   margin-top: 24px;
-  color: hsl(var(--ink-muted));
+  color: #c2d0dc;
 }
 .footer-main .eyebrow {
-  color: hsl(var(--ink-muted));
+  color: #c2d0dc;
   font-size: 9px;
   margin-bottom: 22px;
 }
@@ -1217,7 +1217,7 @@
   overflow-wrap: anywhere;
 }
 .footer-main a:hover {
-  color: hsl(var(--electric));
+  color: #f8c332;
 }
 .footer-socials {
   display: flex;
@@ -1229,17 +1229,17 @@
   height: 44px;
   display: grid;
   place-items: center;
-  color: hsl(var(--ink-muted));
+  color: #c2d0dc;
 }
 .footer-bottom {
-  border-top: 1px solid hsl(var(--line-dark));
+  border-top: 1px solid #40586f;
   padding-top: 24px;
   margin-top: 45px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 24px;
-  color: hsl(var(--ink-muted));
+  color: #c2d0dc;
   font-size: 9px;
 }
 .footer-attribution {

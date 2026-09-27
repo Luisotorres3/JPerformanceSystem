@@ -1,0 +1,57 @@
+.collaborations-page { background: #fff; color: #0c2945; }
+.collaboration-list { border-top: 1px solid #d9dfe4; }
+.collaboration-item { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.618fr); border-bottom: 1px solid #d9dfe4; }
+.collaboration-brand { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; padding: 40px; background: #f2f3f4; text-align: center; }
+.collaboration-brand .jf-logo-crop { max-width: 310px; }
+.collaboration-brand > span { font-size: 14px; font-weight: 600; }
+.collaboration-brand-agency { background: #0c2945; color: #fff; }
+.collaboration-agency-logo { width: 230px; max-width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; }
+.collaboration-details { padding: 36px 40px; min-width: 0; }
+.collaboration-details .eyebrow { font-size: 11px; color: #52616e; }
+.collaboration-details h2 { margin: 12px 0 16px; font-size: 28px; line-height: 1.2; }
+.collaboration-details > p:not(.eyebrow) { color: #495763; line-height: 1.7; max-width: 62ch; }
+.collaboration-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 20px; margin-top: 24px; }
+.collaboration-actions .text-button { display: inline-flex; align-items: center; gap: 8px; }
+.collaboration-heading { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.collaboration-jump { display: inline-flex; align-items: center; gap: 12px; flex-shrink: 0; padding-block: 12px; }
+.collaborations-page .inner-page { padding-bottom: 55px; }
+.collaboration-item + .collaboration-item { margin-top: 24px; border-top: 1px solid #d9dfe4; }
+.collaboration-brand { position: relative; padding-top: 55px; gap: 18px; border-top: 3px solid #eebc32; }
+.collaboration-brand .collaboration-index { position: absolute; top: 18px; left: 24px; font-size: 10px; color: #52616e; }
+.collaboration-brand .collaboration-jps { width: 140px; height: 104px; }
+.collaboration-plus { color: #667684; flex-shrink: 0; }
+.collaboration-brand-agency .collaboration-index { color: #c2d0dc; }
+.collaboration-benefits { display: grid; gap: 10px; margin-top: 20px; font-size: 14px; }
+.collaboration-benefits li { display: flex; align-items: center; gap: 10px; }
+.collaboration-benefits svg { flex-shrink: 0; color: #0c2945; }
+.collaboration-invitation { position: relative; isolation: isolate; overflow: hidden; background: #0c2945; color: #fff; padding-block: 64px; scroll-margin-top: 100px; }
+.collaboration-invitation-photo { position: absolute; z-index: -2; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 48%; }
+.collaboration-invitation::before { content: ""; position: absolute; z-index: -1; inset: 0; background: linear-gradient(90deg, rgba(8,30,51,.98) 0%, rgba(8,30,51,.94) 42%, rgba(8,30,51,.45) 100%); }
+.collaboration-invitation-content > .eyebrow { display: flex; align-items: center; gap: 12px; color: #f8c332; }
+.collaboration-invitation h2 { font: 400 44px/1.18 var(--display-font); margin: 20px 0; max-width: 650px; }
+.collaboration-invitation h2 span { color: #f8c332; }
+.collaboration-invitation-content > p:not(.eyebrow) { max-width: 53ch; color: #e2e9ef; line-height: 1.7; }
+.collaboration-audience { display: flex; flex-wrap: wrap; gap: 10px 20px; margin-block: 24px; color: #e2e9ef; font-size: 13px; }
+.collaboration-audience li { padding-left: 12px; border-left: 2px solid #f8c332; }
+.collaboration-invitation .button-gold { background: #f8c332; color: #0c2945; border-color: #f8c332; }
+.collaboration-invitation .button-gold:hover { background: #fff; border-color: #fff; }
+.collaboration-invitation-content > .collaboration-invitation-note { margin-top: 14px; font-size: 13px; }
+@media (max-width: 1100px) {
+  .desktop-nav { display: none; }
+  .menu-trigger { display: inline-flex; }
+  .nav-cta { margin-left: auto; }
+}
+@media (max-width: 650px) {
+  .collaboration-heading { align-items: flex-start; flex-direction: column; gap: 8px; }
+  .collaboration-item { grid-template-columns: minmax(0, 1fr); }
+  .collaboration-brand { padding: 48px 24px 24px; gap: 14px; }
+  .collaboration-brand .collaboration-jps { width: 110px; height: 80px; }
+  .collaboration-agency-logo { width: 180px; }
+  .collaboration-brand .jf-logo-crop { max-width: 250px; }
+  .collaboration-details { padding: 24px 0; }
+  .collaboration-details h2 { font-size: 24px; }
+  .collaboration-invitation { padding-block: 40px; }
+  .collaboration-invitation::before { background: rgba(8,30,51,.9); }
+  .collaboration-invitation h2 { font-size: 32px; }
+  .collaboration-invitation .v2-button { width: 100%; padding-inline: 16px; gap: 12px; font-size: 14px; }
+}

@@ -76,7 +76,7 @@ const FAQ = ({ compact = false }: { compact?: boolean }) => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <p className="eyebrow">07 / ANTES DE EMPEZAR</p>
+          <p className="eyebrow">06 / ANTES DE EMPEZAR</p>
           <h2 className="display-heading">
             Las cosas claras.
             <br />

@@ -655,7 +655,7 @@
   background: hsl(var(--gold) / 0.45);
 }
 .site-footer {
-  border-top: 1px solid hsl(var(--line-dark));
+  border-top: 1px solid #40586f;
 }
 @media (min-width: 1600px) {
   .hero-stage {

@@ -52,7 +52,7 @@ p { line-height: 1.618; }
 .home-v2 .method-compact .step-detail > span { background: #edf3fa; border-color: #d4dee8; }
 .home-v2 .home-challenge-end { font-size: 12px; }
 .home-v2 .brand-hero .action-visual figcaption .action-photo-index { font-size: 12px; letter-spacing: 0; }
-.home-v2 .site-footer .brand small { color: #795800; }
+.site-footer .brand small { color: #f8c332; }
 .home-plan-paths,
 .home-challenge-grid,
 .challenge-explorer .challenge-grid { gap: var(--space-md); }
@@ -121,7 +121,7 @@ p { line-height: 1.618; }
 .mobile-menu :focus-visible,
 .site-footer :focus-visible,
 .plan-photo-detail :focus-visible { outline-color: #f3bc30; }
-.home-v2 .site-footer :focus-visible { outline-color: #2867a6; }
+.home-v2 .site-footer :focus-visible { outline-color: #f3bc30; }
 @media (min-width: 1101px) {
   .plans-section .plan-catalog,
   .faq-layout,

@@ -17,6 +17,7 @@ const routes = [
   "/retos?tipo=fuerza",
   "/retos?tipo=eventos",
   "/clientes",
+  "/colaboraciones",
   "/contacto",
   "/checkout?plan=Running",
   "/privacidad",
@@ -36,6 +37,18 @@ try {
   await page.route(/api\.emailjs\.com|google-analytics\.com|googletagmanager\.com/, (route) =>
     route.abort()
   );
+  await page.goto(`${base}/colaboraciones`);
+  await page.getByRole("heading", { name: "Colaboraciones", exact: true }).waitFor();
+  assert.equal(await page.getByRole("link", { name: "Ver packs conjuntos" }).getAttribute("href"), "/planes?tipo=conjunto");
+  assert.equal(await page.getByRole("link", { name: "Quiero colaborar con JPS" }).getAttribute("href"), "/contacto?colaboracion=marca");
+  assert.equal(await page.getByRole("link", { name: "Conoce Área15" }).getAttribute("href"), "https://area15nextstep.com/");
+  assert.equal(await page.getByRole("heading", { name: "Área15 Next Step", exact: true }).count(), 1);
+  assert.match(await page.locator("main").innerText(), /Entrenador personal de los futbolistas que forman parte de la agencia Área15/);
+  assert.doesNotMatch(await page.locator("main").innerText(), /HSN|10%|Próximamente/);
+  await page.goto(base);
+  await page.locator(".home-v2 h1").waitFor();
+  assert.equal(await page.locator("#capitulo-nutricion, .home-partners").count(), 0);
+  assert.equal(await page.locator(".scroll-chapter").count(), 7);
   for (const width of [1440, 768, 390, 320]) {
     await page.setViewportSize({ width, height: 900 });
     for (const route of routes) {
@@ -50,6 +63,11 @@ try {
         scrollTo(0, 0);
       });
       await page.waitForTimeout(150);
+      const footer = page.locator(".site-footer");
+      if (await footer.count()) {
+        assert.equal(await footer.evaluate((node) => getComputedStyle(node).backgroundColor), "rgb(12, 41, 69)", `${width} ${route}: shared navy footer`);
+        assert.match(await footer.locator(".brand img").getAttribute("src"), /jps-white/, `${route}: white footer logo`);
+      }
       assert.equal(
         await page.evaluate(() => document.documentElement.scrollWidth > innerWidth),
         false,
@@ -73,9 +91,9 @@ try {
         );
         assert.deepEqual(violations, [], `${width} ${route}: accessibility`);
       }
-      if (route === "/" || route === "/planes") {
+      if (route === "/" || route === "/planes" || route === "/colaboraciones") {
         await page.screenshot({
-          path: `qa.local/release/${width}-${route === "/" ? "home" : "plans"}.png`,
+          path: `qa.local/release/${width}-${route === "/" ? "home" : route.slice(1)}.png`,
           fullPage: true,
         });
       }
@@ -181,23 +199,24 @@ try {
     for (const selector of ['meta[property="og:image"]', 'meta[name="twitter:image"]']) {
       assert.equal(
         await crawler.locator(selector).getAttribute("content"),
-        "https://jperformancesystem.es/media/jps-social-v2-20260927.jpg"
+        "https://jperformancesystem.es/media/jps-social-v4-logo.png"
       );
     }
     assert.equal(
       await crawler.locator('meta[property="og:image:width"]').getAttribute("content"),
-      "1200"
+      "1024"
     );
     assert.equal(
       await crawler.locator('meta[property="og:image:height"]').getAttribute("content"),
-      "630"
+      "1024"
     );
   }
   const { default: sharp } = await import("sharp");
-  const socialImage = await sharp("dist/media/jps-social-v2-20260927.jpg").metadata();
-  assert.equal(socialImage.width, 1200);
-  assert.equal(socialImage.height, 630);
-  assert.equal(socialImage.format, "jpeg");
+  const socialImage = await sharp("dist/media/jps-social-v4-logo.png").metadata();
+  assert.equal(socialImage.width, 1024);
+  assert.equal(socialImage.height, 1024);
+  assert((await readFile("dist/media/jps-social-v4-logo.png")).byteLength < 2 * 1024 * 1024, "Social image should stay under 2 MB");
+  assert.equal(socialImage.format, "png");
   await crawler.close();
   await writeFile("qa.local/release/results.json", JSON.stringify(results, null, 2));
 } finally {
