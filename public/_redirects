@@ -1,5 +1,7 @@
 http://jperformancesystem.es/* https://jperformancesystem.es/:splat 301!
 http://www.jperformancesystem.es/* https://jperformancesystem.es/:splat 301!
 /blog /retos/ 301
-/reviews /futbolistas/ 301
+/reviews /clientes/ 301
+/futbolistas /clientes/ 301
+/futbolistas/ /clientes/ 301
 /* /404.html 404

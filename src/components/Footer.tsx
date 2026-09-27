@@ -39,7 +39,7 @@ export default function Footer() {
           <div>
             <span className="eyebrow">EXPLORA</span>
             <Link to="/planes">Planes de entrenamiento</Link>
-            <Link to="/futbolistas">Clientes</Link>
+            <Link to="/clientes">Clientes</Link>
             <Link to="/retos">Retos</Link>
             <Link to="/contacto">Contacto</Link>
           </div>
