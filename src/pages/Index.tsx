@@ -6,7 +6,7 @@ import MethodSection from "@/components/v2/MethodSection";
 import ResultsShowcase from "@/components/v2/ResultsShowcase";
 import FinalCTA from "@/components/v2/FinalCTA";
 import ScrollChapter from "@/components/v2/ScrollChapter";
-import { PlansPreview, PartnersPreview, ChallengesPreview } from "@/components/v2/HomePreviews";
+import { PlansPreview, ChallengesPreview } from "@/components/v2/HomePreviews";
 export default function Index() {
   return (
     <div className="home-v2">
@@ -36,32 +36,25 @@ export default function Index() {
         <ScrollChapter
           id="capitulo-planes"
           number="04"
-          next={{ id: "capitulo-nutricion", label: "Colaboraciones" }}
+          next={{ id: "capitulo-retos", label: "Retos con JPS" }}
         >
           <PlansPreview />
         </ScrollChapter>
         <ScrollChapter
-          id="capitulo-nutricion"
-          number="05"
-          next={{ id: "capitulo-retos", label: "Retos con JPS" }}
-        >
-          <PartnersPreview />
-        </ScrollChapter>
-        <ScrollChapter
           id="capitulo-retos"
-          number="06"
+          number="05"
           next={{ id: "capitulo-dudas", label: "Tus dudas" }}
         >
           <ChallengesPreview />
         </ScrollChapter>
         <ScrollChapter
           id="capitulo-dudas"
-          number="07"
+          number="06"
           next={{ id: "capitulo-empezar", label: "El siguiente paso" }}
         >
           <FAQ compact />
         </ScrollChapter>
-        <ScrollChapter id="capitulo-empezar" number="08">
+        <ScrollChapter id="capitulo-empezar" number="07">
           <FinalCTA />
         </ScrollChapter>
       </main>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { Menu, ArrowUpRight } from "lucide-react";
+import { Menu, ArrowUpRight, Instagram } from "lucide-react";
+import { SiTiktok, SiWhatsapp } from "react-icons/si";
 import {
   Dialog,
   DialogTrigger,
@@ -16,6 +17,7 @@ const links = [
   { to: "/planes", label: "Planes" },
   { to: "/clientes", label: "Clientes" },
   { to: "/retos", label: "Retos" },
+  { to: "/colaboraciones", label: "Colaboraciones" },
   { to: "/contacto", label: "Contacto" },
 ];
 export default function Navigation() {
@@ -40,9 +42,7 @@ export default function Navigation() {
       >
         Saltar al contenido
       </a>
-      <header
-        className="site-header header-solid"
-      >
+      <header className="site-header header-solid">
         <nav className="v2-container nav-layout" aria-label="Navegación principal">
           <Link to="/" className="brand" aria-label="J Performance System — Inicio">
             <BrandLogo variant="white" decorative />
@@ -74,7 +74,7 @@ export default function Navigation() {
                 </span>
               </DialogTitle>
               <DialogDescription className="sr-only">
-                Navega por los planes, clientes, retos y contacto de Juan Pasquau.
+                Navega por los planes, clientes, retos, colaboraciones y contacto de Juan Pasquau.
               </DialogDescription>
               <div className="mobile-menu-links">
                 {links.map((link, i) => (
@@ -92,14 +92,25 @@ export default function Navigation() {
                   Empieza tu cambio <ArrowUpRight size={20} />
                 </Link>
               </DialogClose>
-              <a
-                className="mobile-social"
-                href={CONTACT_INFO.social.instagram.url}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Instagram / @jperformancesystem
-              </a>
+              <div className="mobile-menu-socials" role="group" aria-label="Redes sociales de JPS">
+                {[
+                  { name: "WhatsApp", url: CONTACT_INFO.whatsapp.url, Icon: SiWhatsapp },
+                  { name: "Instagram", url: CONTACT_INFO.social.instagram.url, Icon: Instagram },
+                  { name: "TikTok", url: CONTACT_INFO.social.tiktok.url, Icon: SiTiktok },
+                ].map(({ name, url, Icon }) => (
+                  <DialogClose asChild key={name}>
+                    <a
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${name} (abre en otra pestaña)`}
+                      title={name}
+                    >
+                      <Icon size={23} aria-hidden="true" />
+                    </a>
+                  </DialogClose>
+                ))}
+              </div>
             </DialogContent>
           </Dialog>
         </nav>

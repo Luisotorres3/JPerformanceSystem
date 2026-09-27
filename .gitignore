@@ -44,6 +44,7 @@ __pycache__/
 
 # Local credentials and machine configuration
 .envrc
+.envrc.*
 .npmrc
 *.pem
 *.key
@@ -51,11 +52,44 @@ __pycache__/
 *.pfx
 .codex/
 .claude/
+.agents/
+.cursor/
+.aider*
+.netrc
+id_rsa
+id_ed25519
+.pypirc
+.ssh/
+.aws/
+.azure/
+.config/gcloud/
+credentials.json
+service-account*.json
+service_account*.json
+*-firebase-adminsdk-*.json
+*.keystore
+*.jks
+*.kdbx
+*.sqlite
+*.sqlite3
+*.db
+*.sql
+*.har
+*.dump
+*.heapsnapshot
+*.tsv
+/private/
+/local/
+/tmp/
+/temp/
+/backups/
 
 # Local deployment archives and temporary files
 /*.zip
 /*.tar
 /*.tar.gz
+/*.7z
+/*.rar
 *.tmp
 *.bak
 

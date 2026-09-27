@@ -12,10 +12,14 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
       - uses: actions/setup-node@v6
         with:
           node-version: 22
           cache: npm
+      - run: npm run check:repo
+      - run: npm run test:repo
       - run: npm ci
       - run: npm run typecheck
       - run: npm run lint -- --quiet
@@ -26,5 +30,8 @@ jobs:
         if: always()
         with:
           name: review-results
-          path: qa.local/
+          path: |
+            qa.local/launch-results.json
+            qa.local/release/results.json
+            qa.local/release/*.png
           retention-days: 14

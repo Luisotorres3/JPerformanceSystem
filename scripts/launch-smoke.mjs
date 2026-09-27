@@ -9,7 +9,7 @@ const page = await context.newPage();
 const errors = [];
 page.on("pageerror", error => errors.push(error.message));
 await page.addInitScript(() => localStorage.setItem("cookieConsent", "rejected"));
-const paths = ["/", "/planes/", "/retos/", "/clientes/", "/contacto/", "/privacidad/", "/cookies/", "/aviso-legal/", "/condiciones/", "/checkout/?plan=Running", "/no-existe"];
+const paths = ["/", "/planes/", "/retos/", "/clientes/", "/colaboraciones/", "/contacto/", "/privacidad/", "/cookies/", "/aviso-legal/", "/condiciones/", "/checkout/?plan=Running", "/no-existe"];
 const links = new Set();
 const timings = [];
 try {

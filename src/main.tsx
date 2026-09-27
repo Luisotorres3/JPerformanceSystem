@@ -15,6 +15,7 @@ import "./styles/contact.css";
 import "./styles/home-light.css";
 import "./styles/design-rhythm.css";
 import "./styles/plans-compact.css";
+import "./styles/collaborations.css";
 
 // Preserve previously shared hash-router links, including their query parameters.
 if (location.hash.startsWith("#/")) {

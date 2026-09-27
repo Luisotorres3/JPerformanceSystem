@@ -32,6 +32,8 @@ jobs:
         with:
           node-version: 22
           cache: npm
+      - run: npm run check:repo
+        if: inputs.version == 'main'
       - run: npm ci
         if: inputs.version != 'v1-pages-snapshot'
       - run: npm run typecheck && npm run lint -- --quiet && npm run build

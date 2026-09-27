@@ -18,6 +18,7 @@ const Checkout = lazy(() => import("./pages/Checkout"));
 const Challenges = lazy(() => import("./pages/Challenges"));
 const Footballers = lazy(() => import("./pages/Reviews"));
 const Contact = lazy(() => import("./pages/Contact"));
+const Collaborations = lazy(() => import("./pages/Collaborations"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const LegalNotice = lazy(() => import("./pages/LegalNotice"));
 const CookiesPolicy = lazy(() => import("./pages/CookiesPolicy"));
@@ -49,6 +50,7 @@ const App = () => (
               <Route path="/futbolistas" element={<Navigate to="/clientes" replace />} />
               <Route path="/reviews" element={<Navigate to="/clientes" replace />} />
               <Route path="/contacto" element={<Contact />} />
+              <Route path="/colaboraciones" element={<Collaborations />} />
               <Route path="/privacidad" element={<PrivacyPolicy />} />
               <Route path="/aviso-legal" element={<LegalNotice />} />
               <Route path="/cookies" element={<CookiesPolicy />} />

@@ -4,6 +4,8 @@
   "version": "2.0.0",
   "type": "module",
   "scripts": {
+    "check:repo": "node scripts/check-repository.mjs",
+    "test:repo": "node --test scripts/check-repository.test.mjs",
     "dev": "vite",
     "build": "vite build && node scripts/build-pages.mjs",
     "build:dev": "vite build --mode development",

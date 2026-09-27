@@ -29,8 +29,6 @@
 .home-v2 #presentacion > .chapter-content > section,
 .home-v2 #capitulo-futbolistas,
 .home-v2 #capitulo-futbolistas > .chapter-content > section,
-.home-v2 #capitulo-nutricion,
-.home-v2 #capitulo-nutricion > .chapter-content > section,
 .home-v2 #capitulo-empezar,
 .home-v2 #capitulo-empezar > .chapter-content > section { background: #fff; }
 .home-v2 #capitulo-metodo,
@@ -38,11 +36,11 @@
 .home-v2 #capitulo-planes,
 .home-v2 #capitulo-planes > .chapter-content > section { background: var(--section-off-white); }
 .home-v2 #capitulo-retos,
-.home-v2 #capitulo-retos > .chapter-content > section { background: var(--section-off-white); }
+.home-v2 #capitulo-retos > .chapter-content > section { background: #fff; }
 .home-v2 #capitulo-dudas,
-.home-v2 #capitulo-dudas > .chapter-content > section { background: #fff; }
+.home-v2 #capitulo-dudas > .chapter-content > section { background: var(--section-off-white); }
 .home-v2 #capitulo-empezar,
-.home-v2 #capitulo-empezar > .chapter-content > section { background: var(--section-off-white); color: #1c2329; }
+.home-v2 #capitulo-empezar > .chapter-content > section { background: #fff; color: #1c2329; }
 .home-v2 .chapter-connector {
   position: relative;
   border-top: 1px solid #ccd5da;
@@ -170,12 +168,6 @@
 .home-v2 .final-cta h2 { color: #0a2747; }
 .home-v2 .final-bottom p { color: #505b63; }
 .home-v2 .finish-lines { display: none; }
-.home-v2 .site-footer { background: #fff; color: #1c2329; border-top: 1px solid #dce3e7; }
-.home-v2 .footer-main p,
-.home-v2 .footer-main .eyebrow,
-.home-v2 .footer-socials a,
-.home-v2 .footer-bottom { color: #505b63; }
-.home-v2 .footer-bottom { border-color: #dce3e7; }
 .home-v2 :focus-visible { outline-color: #d29e20; }
 @media (max-width: 600px) {
   .home-v2 .scroll-chapter:not(:first-child)::before {

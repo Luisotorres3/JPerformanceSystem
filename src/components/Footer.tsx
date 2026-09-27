@@ -1,10 +1,9 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ArrowUpRight, Instagram, Linkedin, Send } from "lucide-react";
 import { SiTiktok, SiWhatsapp } from "react-icons/si";
 import BrandLogo from "@/components/BrandLogo";
 import { CONTACT_INFO } from "@/constants/contact";
 export default function Footer() {
-  const isHome = useLocation().pathname === "/";
   const socials = [
     { name: "Instagram", url: CONTACT_INFO.social.instagram.url, Icon: Instagram },
     { name: "WhatsApp", url: CONTACT_INFO.whatsapp.url, Icon: SiWhatsapp },
@@ -18,7 +17,7 @@ export default function Footer() {
         <div className="footer-main">
           <div>
             <Link to="/" className="brand">
-              <BrandLogo variant={isHome ? "dark" : "white"} decorative />
+              <BrandLogo variant="white" decorative />
               <span>
                 J PERFORMANCE<small>SYSTEM</small>
               </span>
@@ -42,6 +41,7 @@ export default function Footer() {
             <Link to="/clientes">Clientes</Link>
             <Link to="/retos">Retos</Link>
             <Link to="/contacto">Contacto</Link>
+            <Link to="/colaboraciones">Colaboraciones</Link>
           </div>
           <div className="footer-contact">
             <span className="eyebrow">HABLEMOS DE TU OBJETIVO</span>
