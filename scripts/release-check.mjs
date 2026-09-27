@@ -181,22 +181,23 @@ try {
     for (const selector of ['meta[property="og:image"]', 'meta[name="twitter:image"]']) {
       assert.equal(
         await crawler.locator(selector).getAttribute("content"),
-        "https://jperformancesystem.es/media/jps-social-v2-20260927.jpg"
+        "https://jperformancesystem.es/media/jps-social-v3-hd.jpg"
       );
     }
     assert.equal(
       await crawler.locator('meta[property="og:image:width"]').getAttribute("content"),
-      "1200"
+      "2400"
     );
     assert.equal(
       await crawler.locator('meta[property="og:image:height"]').getAttribute("content"),
-      "630"
+      "1260"
     );
   }
   const { default: sharp } = await import("sharp");
-  const socialImage = await sharp("dist/media/jps-social-v2-20260927.jpg").metadata();
-  assert.equal(socialImage.width, 1200);
-  assert.equal(socialImage.height, 630);
+  const socialImage = await sharp("dist/media/jps-social-v3-hd.jpg").metadata();
+  assert.equal(socialImage.width, 2400);
+  assert.equal(socialImage.height, 1260);
+  assert((await readFile("dist/media/jps-social-v3-hd.jpg")).byteLength < 2 * 1024 * 1024, "Social image should stay under 2 MB");
   assert.equal(socialImage.format, "jpeg");
   await crawler.close();
   await writeFile("qa.local/release/results.json", JSON.stringify(results, null, 2));
