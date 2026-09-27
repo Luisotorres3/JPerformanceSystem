@@ -16,7 +16,7 @@ const routes = [
   "/retos",
   "/retos?tipo=fuerza",
   "/retos?tipo=eventos",
-  "/futbolistas",
+  "/clientes",
   "/contacto",
   "/checkout?plan=Running",
   "/privacidad",
@@ -150,6 +150,17 @@ try {
   assert.deepEqual(errors, []);
   const metadata = JSON.parse(await readFile("src/data/seo.json", "utf8"));
   const crawler = await browser.newPage({ javaScriptEnabled: false });
+  for (const legacy of ["/futbolistas/", "/reviews/"]) {
+    await crawler.goto(`${base}${legacy}`);
+    await crawler.waitForURL(/\/clientes\/?$/);
+    assert.equal(
+      await crawler.locator('link[rel="canonical"]').getAttribute("href"),
+      "https://jperformancesystem.es/clientes/"
+    );
+  }
+  const sitemap = await readFile("dist/sitemap.xml", "utf8");
+  assert(sitemap.includes("https://jperformancesystem.es/clientes/"));
+  assert(!sitemap.includes("/futbolistas"));
   for (const route of Object.keys(metadata)) {
     const html = await readFile(`dist${route === "/" ? "" : route}/index.html`, "utf8");
     assert(html.includes(metadata[route].title), `Missing static title: ${route}`);

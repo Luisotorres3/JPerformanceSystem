@@ -19,8 +19,9 @@ for (const [path, page] of Object.entries(pages)) {
 }
 await writeFile("dist/404.html", render("/404", { title: "Página no encontrada | J Performance System", description: "La página solicitada no existe." }, true));
 await writeFile("dist/sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${Object.keys(pages).filter(path => path !== "/checkout").map(path => `  <url><loc>https://jperformancesystem.es${path === "/" ? "/" : `${path}/`}</loc></url>`).join("\n")}\n</urlset>\n`);
-for (const [alias, destination] of [["/blog", "/retos"], ["/reviews", "/futbolistas"]]) {
+for (const [alias, destination] of [["/blog", "/retos"], ["/reviews", "/clientes"], ["/futbolistas", "/clientes"]]) {
   await mkdir(`dist${alias}`, { recursive: true });
-  await writeFile(`dist${alias}/index.html`, render(destination, pages[destination]));
+  const html = render(destination, pages[destination]).replace("</head>", `<meta http-equiv="refresh" content="0;url=${destination}/" /></head>`);
+  await writeFile(`dist${alias}/index.html`, html);
 }
 console.log("Static route entry points, social metadata, sitemap and 404 generated.");

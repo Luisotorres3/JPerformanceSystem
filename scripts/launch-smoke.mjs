@@ -9,7 +9,7 @@ const page = await context.newPage();
 const errors = [];
 page.on("pageerror", error => errors.push(error.message));
 await page.addInitScript(() => localStorage.setItem("cookieConsent", "rejected"));
-const paths = ["/", "/planes/", "/retos/", "/futbolistas/", "/contacto/", "/privacidad/", "/cookies/", "/aviso-legal/", "/condiciones/", "/checkout/?plan=Running", "/no-existe"];
+const paths = ["/", "/planes/", "/retos/", "/clientes/", "/contacto/", "/privacidad/", "/cookies/", "/aviso-legal/", "/condiciones/", "/checkout/?plan=Running", "/no-existe"];
 const links = new Set();
 const timings = [];
 try {
@@ -30,6 +30,12 @@ try {
   for (const link of links) {
     const url = new URL(link);
     assert(paths.some(path => new URL(path, base).pathname.replace(/\/$/, "") === url.pathname.replace(/\/$/, "")) || ["/blog", "/reviews"].includes(url.pathname), `Unknown internal route: ${link}`);
+  }
+  for (const legacy of ["/futbolistas/", "/reviews/", "/#/futbolistas"]) {
+    await page.goto(`${base}${legacy}`);
+    await page.waitForURL(/\/clientes\/?$/);
+    await page.getByRole("heading", { name: "Clientes", exact: true }).waitFor();
+    assert.equal(await page.locator('link[rel="canonical"]').getAttribute("href"), "https://jperformancesystem.es/clientes/");
   }
   await page.goto(`${base}/#/contacto?reto=banca-100kg`);
   await page.locator("#message").waitFor();

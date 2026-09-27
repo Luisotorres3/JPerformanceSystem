@@ -14,7 +14,7 @@ import { CONTACT_INFO } from "@/constants/contact";
 const links = [
   { to: "/", label: "Inicio" },
   { to: "/planes", label: "Planes" },
-  { to: "/futbolistas", label: "Clientes" },
+  { to: "/clientes", label: "Clientes" },
   { to: "/retos", label: "Retos" },
   { to: "/contacto", label: "Contacto" },
 ];

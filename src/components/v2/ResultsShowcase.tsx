@@ -22,7 +22,7 @@ export default function ResultsShowcase() {
               <br />
               Distintos puntos de partida. La misma exigencia.
             </p>
-            <Link to="/futbolistas" className="text-button">
+            <Link to="/clientes" className="text-button">
               Ver todos los clientes <ArrowUpRight size={18} />
             </Link>
           </div>
