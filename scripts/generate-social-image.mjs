@@ -2,7 +2,7 @@ import { readFile } from "node:fs/promises";
 import { chromium } from "playwright";
 
 // Render a share card from the actual brand assets, without modifying the originals.
-const portrait = (await readFile("src/assets/juan-personal.webp")).toString("base64");
+const portrait = (await readFile("src/assets/juan-personal.png")).toString("base64");
 const font = (await readFile("public/fonts/anton-latin.woff2")).toString("base64");
 const browser = await chromium.launch({
   channel: process.env.BROWSER_CHANNEL || (process.platform === "win32" ? "msedge" : undefined),
@@ -10,7 +10,7 @@ const browser = await chromium.launch({
 try {
   const page = await browser.newPage({
     viewport: { width: 1200, height: 630 },
-    deviceScaleFactor: 1,
+    deviceScaleFactor: 2,
   });
   await page.setContent(`<!doctype html><html lang="es"><head><meta charset="utf-8"><style>
     @font-face { font-family: Anton; src: url(data:font/woff2;base64,${font}) format('woff2'); }
@@ -30,16 +30,16 @@ try {
     <p class="name">Juan Pasquau · Entrenador</p>
     <p class="services">Running · Fuerza · Oposiciones</p>
     <p class="url">jperformancesystem.es</p>
-    <img src="data:image/webp;base64,${portrait}" alt="Juan Pasquau">
+    <img src="data:image/png;base64,${portrait}" alt="Juan Pasquau">
   </main></body></html>`);
   await page.evaluate(async () => {
     await document.fonts.ready;
     await Promise.all([...document.images].map((image) => image.decode()));
   });
   await page.screenshot({
-    path: "public/media/jps-social-v2-20260927.jpg",
+    path: "public/media/jps-social-v3-hd.jpg",
     type: "jpeg",
-    quality: 90,
+    quality: 98,
   });
 } finally {
   await browser.close();
