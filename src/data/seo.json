@@ -1,12 +1,42 @@
 {
-  "/": { "title": "Entrena con un sistema | J Performance System", "description": "Entrenamiento personal con Juan Pasquau. Fuerza, running y preparación física para opositores. Descubre los planes y reserva una entrevista." },
-  "/planes": { "title": "Planes de entrenamiento | J Performance System", "description": "Planes de running, fuerza, gimnasio y carrera y oposiciones. Packs con JF Nutrición, precios mensuales y entrevista antes del pago." },
-  "/futbolistas": { "title": "Clientes | J Performance System", "description": "Conoce a los clientes con los que ha trabajado Juan Pasquau y su preparación con J Performance System." },
-  "/retos": { "title": "Retos de running y fuerza | J Performance System", "description": "Prepara tu 10K, media maratón, maratón, 100 kg en banca o dominadas con Juan Pasquau. Consulta los próximos eventos deportivos." },
-  "/contacto": { "title": "Contacto | J Performance System", "description": "Cuéntame tu objetivo y encuentra tu plan de entrenamiento con Juan Pasquau. Contacto por formulario, teléfono o WhatsApp." },
-  "/checkout": { "title": "Reserva tu entrevista | J Performance System", "description": "Elige tu plan y reserva una entrevista con Juan Pasquau. Sin cobro al reservar." },
-  "/privacidad": { "title": "Privacidad | J Performance System", "description": "Información sobre el tratamiento de datos personales y tus derechos en J Performance System." },
-  "/cookies": { "title": "Cookies | J Performance System", "description": "Información sobre el almacenamiento local, la analítica opcional y tus preferencias de cookies." },
-  "/aviso-legal": { "title": "Aviso legal | J Performance System", "description": "Información sobre el titular y el uso del sitio de J Performance System." },
-  "/condiciones": { "title": "Condiciones del servicio | J Performance System", "description": "Información sobre consultas, entrevistas, contratación de planes, cancelaciones y derechos del consumidor." }
+  "/": {
+    "title": "Empieza ahora. Empieza de verdad. | J Performance System",
+    "description": "Entrenamiento personal con Juan Pasquau. Running, fuerza y preparación de oposiciones. Tú trabajas, tú progresas. Encuentra tu plan en JPS."
+  },
+  "/planes": {
+    "title": "Planes de entrenamiento | J Performance System",
+    "description": "Planes de running, fuerza, gimnasio y carrera y oposiciones. Packs con JF Nutrición, precios mensuales y entrevista antes del pago."
+  },
+  "/futbolistas": {
+    "title": "Clientes | J Performance System",
+    "description": "Conoce a los clientes con los que ha trabajado Juan Pasquau y su preparación con J Performance System."
+  },
+  "/retos": {
+    "title": "Retos de running y fuerza | J Performance System",
+    "description": "Prepara tu 10K, media maratón, maratón, 100 kg en banca o dominadas con Juan Pasquau. Consulta los próximos eventos deportivos."
+  },
+  "/contacto": {
+    "title": "Contacto | J Performance System",
+    "description": "Cuéntame tu objetivo y encuentra tu plan de entrenamiento con Juan Pasquau. Contacto por formulario, teléfono o WhatsApp."
+  },
+  "/checkout": {
+    "title": "Reserva tu entrevista | J Performance System",
+    "description": "Elige tu plan y reserva una entrevista con Juan Pasquau. Sin cobro al reservar."
+  },
+  "/privacidad": {
+    "title": "Privacidad | J Performance System",
+    "description": "Información sobre el tratamiento de datos personales y tus derechos en J Performance System."
+  },
+  "/cookies": {
+    "title": "Cookies | J Performance System",
+    "description": "Información sobre el almacenamiento local, la analítica opcional y tus preferencias de cookies."
+  },
+  "/aviso-legal": {
+    "title": "Aviso legal | J Performance System",
+    "description": "Información sobre el titular y el uso del sitio de J Performance System."
+  },
+  "/condiciones": {
+    "title": "Condiciones del servicio | J Performance System",
+    "description": "Información sobre consultas, entrevistas, contratación de planes, cancelaciones y derechos del consumidor."
+  }
 }
